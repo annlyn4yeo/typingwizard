@@ -1,0 +1,13 @@
+#refText {
+  color: grey;
+  font-size: 2.2em;
+  margin-bottom: 1em;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
