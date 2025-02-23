@@ -1,5 +1,6 @@
 const refTextDiv = document.getElementById("refText");
 const inputBox = document.getElementById("typingInput");
+const metricsDiv = document.getElementById("metrics");
 
 const refText = refTextDiv.textContent.trim();
 const refWords = refText.split(/\s+/);
@@ -43,5 +44,7 @@ inputBox.addEventListener("input", () => {
     console.log(`Typing Speed: ${wpm.toFixed(2)} WPM`);
     console.log(`Wrong entries: ${wrongEntries}`);
     inputBox.disabled = true;
+
+    metricsDiv.innerHTML = `Typing Speed: ${wpm.toFixed(2)} WPM`;
   }
 });
