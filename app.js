@@ -1,6 +1,7 @@
 const refTextDiv = document.getElementById("refText");
 const inputBox = document.getElementById("typingInput");
 const metricsDiv = document.getElementById("metrics");
+const resetBtn = document.getElementById("resetBtn");
 
 const refText = refTextDiv.textContent.trim();
 const refWords = refText.split(/\s+/);
@@ -39,13 +40,26 @@ inputBox.addEventListener("input", () => {
       if (trimmedInput[i].toLowerCase() !== refText[i].toLowerCase())
         wrongEntries++;
     }
-
-    console.log(`Paragraph complete.`);
-    console.log(`Time: ${elapsedTimeSeconds.toFixed(2)} seconds`);
-    console.log(`Typing Speed: ${wpm.toFixed(2)} WPM`);
-    console.log(`Wrong entries: ${wrongEntries}`);
     inputBox.disabled = true;
-
-    metricsDiv.innerHTML = `Typing Speed: ${wpm.toFixed(2)} WPM`;
+    refTextDiv.style.display = "none";
+    inputBox.style.display = "none";
+    resetBtn.style.display = "block";
+    metricsDiv.innerHTML = `
+      <p>Time: <span>${elapsedTimeSeconds.toFixed(2)} seconds</span></p>
+      <p>Typing Speed: <span>${wpm.toFixed(2)} WPM</span></p>
+      <p>Wrong entries: <span>${wrongEntries}</span></p>
+    `;
   }
+});
+
+resetBtn.addEventListener("click", () => {
+  inputBox.value = "";
+  inputBox.disabled = false;
+  refTextDiv.innerHTML = refText;
+  refTextDiv.style.display = "block";
+  inputBox.style.display = "block";
+  resetBtn.style.display = "none";
+  metricsDiv.innerHTML = "";
+  startTime = null;
+  completed = false;
 });
