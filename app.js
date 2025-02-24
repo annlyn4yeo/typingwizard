@@ -8,6 +8,14 @@ const refWords = refText.split(/\s+/);
 let startTime = null;
 let completed = false;
 
+function calculateGrade(time, wpm, errors) {
+  if (wpm >= 60 && errors <= 5 && time <= 60) return "A";
+  if (wpm >= 50 && errors <= 10 && time <= 90) return "B";
+  if (wpm >= 40 && errors <= 15 && time <= 120) return "C";
+  if (wpm >= 30 && errors <= 20 && time <= 150) return "D";
+  return "F";
+}
+
 inputBox.addEventListener("input", () => {
   const userInput = inputBox.value;
   if (!startTime && userInput.trim() !== "") {
@@ -44,10 +52,12 @@ inputBox.addEventListener("input", () => {
     refTextDiv.style.display = "none";
     inputBox.style.display = "none";
     resetBtn.style.display = "block";
+    const grade = calculateGrade(elapsedTimeSeconds, wpm, wrongEntries);
     metricsDiv.innerHTML = `
       <p>Time: <span>${elapsedTimeSeconds.toFixed(2)} seconds</span></p>
       <p>Typing Speed: <span>${wpm.toFixed(2)} WPM</span></p>
       <p>Wrong entries: <span>${wrongEntries}</span></p>
+      <p>Grade: <span>${grade}</span></p>
     `;
   }
 });
