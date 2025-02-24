@@ -17,7 +17,7 @@ inputBox.addEventListener("input", () => {
     .split("")
     .map((char, i) => {
       if (i < userInput.length) {
-        return userInput[i] === char
+        return userInput[i].toLowerCase() === char.toLowerCase()
           ? `<span class="correct">${char}</span>`
           : `<span class="incorrect">${char}</span>`;
       }
@@ -36,7 +36,8 @@ inputBox.addEventListener("input", () => {
     // Count the number of wrong letter entries.
     let wrongEntries = 0;
     for (let i = 0; i < refText.length; i++) {
-      if (trimmedInput[i] !== refText[i]) wrongEntries++;
+      if (trimmedInput[i].toLowerCase() !== refText[i].toLowerCase())
+        wrongEntries++;
     }
 
     console.log(`Paragraph complete.`);

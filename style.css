@@ -1,13 +1,39 @@
+.cover {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #050505;
+  font-family: "Outfit", serif;
+}
+
 #refText {
-  color: grey;
-  font-size: 2.2em;
+  color: #f4dfc8a4;
+  font-size: 64px;
   margin-bottom: 1em;
+  font-weight: 600;
 }
 
 .correct {
-  color: green;
+  color: #9bb81d;
 }
 
 .incorrect {
-  color: red;
+  color: #750e21;
+}
+
+input {
+  background-color: transparent;
+  width: 60%;
+  color: #e3661dde;
+  font-size: 40px;
+  padding: 32px 8px 12px 8px;
+  border: none;
+  border-bottom: 1px solid #f4dfc8;
+}
+
+input:focus {
+  outline: none;
+  border-color: #e3661dde;
 }
